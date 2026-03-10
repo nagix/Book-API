@@ -1,0 +1,20 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/"
+  method: GET
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    x-powered-by: Express
+    access-control-allow-origin: "*"
+    content-type: application/json; charset=utf-8
+    content-length: "49"
+    etag: W/"31-8kACGz5x+Z8h8awel3DMMy3Pbjk"
+    date: Tue, 10 Mar 2026 03:39:53 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: '{"message":"Book API","docs":"GET /api/v1/books"}'
+order: 1000
