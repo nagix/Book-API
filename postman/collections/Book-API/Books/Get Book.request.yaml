@@ -1,0 +1,5 @@
+$kind: http-request
+url: "{{baseUrl}}/api/v1/books/{{bookId}}"
+method: GET
+examples: ./.resources/Get Book.resources/examples
+order: 2000

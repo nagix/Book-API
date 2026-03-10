@@ -1,0 +1,5 @@
+$kind: http-request
+url: "{{baseUrl}}/api/v1/books/{{bookId}}"
+method: DELETE
+examples: ./.resources/Delete Book.resources/examples
+order: 5000

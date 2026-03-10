@@ -1,0 +1,22 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/v1/books"
+  method: GET
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    x-powered-by: Express
+    access-control-allow-origin: "*"
+    content-type: application/json; charset=utf-8
+    content-length: "155"
+    etag: W/"9b-FME36tfqHs70VaV0pGQpe+Aslvc"
+    date: Tue, 10 Mar 2026 03:38:58 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: '{"books":[{"id":"1","title":"The Great Gatsby","author":"F. Scott
+      Fitzgerald","year":1925},{"id":"2","title":"1984","author":"George
+      Orwell","year":1949}]}'
+order: 1000
