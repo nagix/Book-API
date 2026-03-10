@@ -1,0 +1,31 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/v1/books"
+  method: POST
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "year": 1925
+      }
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    x-powered-by: Express
+    access-control-allow-origin: "*"
+    content-type: application/json; charset=utf-8
+    content-length: "96"
+    etag: W/"60-Qz8IDafwEo3lL1EbO8CTaljpAds"
+    date: Tue, 10 Mar 2026 03:39:22 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: '{"book":{"id":"07b78a54","title":"The Great Gatsby","author":"F. Scott
+      Fitzgerald","year":1925}}'
+order: 1773113966943
