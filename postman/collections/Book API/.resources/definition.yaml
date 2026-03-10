@@ -1,0 +1,7 @@
+$kind: collection
+name: Book API
+variables:
+  - key: baseUrl
+    value: 'http://localhost:3000'
+  - key: bookId
+    value: ''
