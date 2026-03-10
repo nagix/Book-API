@@ -5,7 +5,7 @@ workspace:
 # Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
 cloudResources:
   collections:
-    ../postman/collections/Book API: 26169716-a55361cc-505c-4da9-a252-a3a8c0842c7e
+    ../postman/collections/Book-API: 26169716-a55361cc-505c-4da9-a252-a3a8c0842c7e
 
 # All resources in the `postman/` folder are automatically registered in Local View.
 # Point to additional files outside the `postman/` folder to register them individually. Example:
