@@ -1,0 +1,22 @@
+$kind: http-request
+name: Root
+method: GET
+url: '{{baseUrl}}/'
+order: 1000
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response has 'message' equal to 'Book API'", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData.message).to.eql("Book API");
+      });
+
+      pm.test("Response has 'docs' property", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData).to.have.property("docs");
+      });

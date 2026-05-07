@@ -1,0 +1,42 @@
+$kind: http-request
+name: Create Book
+method: POST
+url: '{{baseUrl}}/api/v1/books'
+order: 3000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "year": 1925,
+      "publisher": "Charles Scribner's Sons"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 201", function () {
+          pm.response.to.have.status(201);
+      });
+
+      pm.test("Response has 'book' with 'id'", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData).to.have.property("book");
+          pm.expect(jsonData.book).to.have.property("id");
+      });
+
+      pm.test("Book title matches request", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData.book.title).to.eql("The Great Gatsby");
+      });
+
+      pm.test("Store bookId in collection variables", function () {
+          const jsonData = pm.response.json();
+          if (jsonData.book && jsonData.book.id) {
+              pm.collectionVariables.set("bookId", jsonData.book.id);
+          }
+      });

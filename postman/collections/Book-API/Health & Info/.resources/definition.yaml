@@ -1,0 +1,4 @@
+$kind: collection
+name: Health & Info
+description: Health check and API information endpoints
+order: 1000

@@ -1,0 +1,43 @@
+$kind: http-request
+name: Update Book
+method: PUT
+url: '{{baseUrl}}/api/v1/books/:id'
+order: 4000
+headers:
+  - key: Content-Type
+    value: application/json
+pathVariables:
+  - key: id
+    value: '1'
+    description: The unique identifier of the book to update
+body:
+  type: json
+  content: |-
+    {
+      "title": "Updated Title",
+      "author": "Updated Author",
+      "year": 2024,
+      "publisher": "Updated Publisher"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response has 'book' object", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData).to.have.property("book");
+          pm.expect(jsonData.book).to.be.an("object");
+      });
+
+      pm.test("Book has all required fields", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData.book).to.have.property("id");
+          pm.expect(jsonData.book).to.have.property("title");
+          pm.expect(jsonData.book).to.have.property("author");
+          pm.expect(jsonData.book).to.have.property("year");
+          pm.expect(jsonData.book).to.have.property("publisher");
+      });

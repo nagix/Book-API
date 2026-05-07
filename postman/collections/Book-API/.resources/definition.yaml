@@ -1,0 +1,8 @@
+$kind: collection
+name: Book API
+description: A REST API for managing books. This collection provides endpoints
+  for creating, reading, updating, and deleting books, as well as health check
+  and API info endpoints.
+variables:
+  baseUrl: http://localhost:3000
+  bookId: ""

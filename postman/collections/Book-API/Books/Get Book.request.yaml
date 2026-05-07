@@ -1,0 +1,29 @@
+$kind: http-request
+name: Get Book
+method: GET
+url: '{{baseUrl}}/api/v1/books/:id'
+order: 2000
+pathVariables:
+  - key: id
+    value: '1'
+    description: The unique identifier of the book
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response has 'book' object", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData).to.have.property("book");
+          pm.expect(jsonData.book).to.be.an("object");
+      });
+
+      pm.test("Book has id, title, author fields", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData.book).to.have.property("id");
+          pm.expect(jsonData.book).to.have.property("title");
+          pm.expect(jsonData.book).to.have.property("author");
+      });

@@ -1,0 +1,26 @@
+$kind: http-request
+name: Delete Book
+method: DELETE
+url: '{{baseUrl}}/api/v1/books/:id'
+order: 5000
+pathVariables:
+  - key: id
+    value: '1'
+    description: The unique identifier of the book to delete
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response has 'message' equal to 'Book deleted'", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData.message).to.eql("Book deleted");
+      });
+
+      pm.test("Response has 'id' property", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData).to.have.property("id");
+      });
